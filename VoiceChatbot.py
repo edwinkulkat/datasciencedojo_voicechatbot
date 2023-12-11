@@ -2,9 +2,10 @@
 """
 Created on Sun Dec  3 00:07:27 2023
 
+@author: Edwin Kulakkattolikel
 
-@author: EK
 reference: https://datasciencedojo.com/blog/voice-chatbot-python-web-scraping/#
+
 """
 
 # Import Libraries
@@ -17,16 +18,17 @@ from threading import Thread
 import requests
 from bs4 import BeautifulSoup
 
+
 # WISH ME FUNCTION, greetings to users based on the time of day and simultaneously updates the canvas
 def wishme():
     hour = datetime.datetime.now().hour
 
     if 0 <= hour < 12:
-        text = "Good Morning sir. I am Jarvis. How can I Serve you?"
+        text = "Good Morning. I am Jarvis. How can I Serve you?"
     elif 12 <= hour < 18:
-        text = "Good Afternoon sir. I am Jarvis. How can I Serve you?"
+        text = "Good Afternoon. I am Jarvis. How can I Serve you?"
     else:
-        text = "Good Evening sir. I am Jarvis. How can I Serve you?"
+        text = "Good Evening. I am Jarvis. How can I Serve you?"
 
     canvas2.create_text(10,10,anchor =NW , text=text,font=('Candara Light', -25,'bold italic'), fill="white",width=350)
     p1=Thread(target=speak,args=(text,))
@@ -83,7 +85,7 @@ def web_scraping(qs):
                answer = title + "\n" + para.text
                break
     else:
-        answer = "Sorry. I could not find the desired results"
+        answer = "Sorry. I could not find the desired results."
 
 
     canvas2.create_text(10, 225, anchor=NW, text=answer, font=('Candara Light', -25,'bold italic'),fill="white", width=350)
@@ -97,7 +99,7 @@ def web_scraping(qs):
 
 # SHUTDOWN FUNCTION
 def shut_down():
-    p1=Thread(target=speak,args=("Shutting down. Thankyou For Using Our Sevice. Take Care, Good Bye.",))
+    p1=Thread(target=speak,args=("Shutting down. Thank you For Using Our Service. Take Care, Good Bye.",))
     p1.start()
     p2 = Thread(target=transition)
     p2.start()
@@ -183,8 +185,6 @@ def takecommand():
         speak("Say that again please")
         return "None"
 
-    
-
 ##############################################################################
 ##############################################################################
 
@@ -255,7 +255,4 @@ if __name__ == "__main__":
     task = Thread(target=main_window)
     task.start()
     root.mainloop()
-
-############################################################################
-############################################################################
 
